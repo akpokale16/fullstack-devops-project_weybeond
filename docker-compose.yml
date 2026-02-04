@@ -4,21 +4,18 @@ services:
   backend:
     build: ./backend
     container_name: backend
-    restart: always
     ports:
       - "5000:5000"
+    restart: always
 
   frontend:
     build: ./frontend
     container_name: frontend
     restart: always
-    ports:
-      - "3000:80"
 
   nginx:
     image: nginx:alpine
     container_name: nginx
-    restart: always
     ports:
       - "80:80"
     volumes:
@@ -26,4 +23,5 @@ services:
     depends_on:
       - frontend
       - backend
- 
+    restart: always
+
